@@ -45,6 +45,10 @@ Windows (via Cygwin or Git Bash):
 curl -sSL 'https://github.com/jamesqo/bomr/raw/master/install.sh' | xargs -0 -i bash --noprofile -c '{}' && PATH+=:~/AppData/Local/bomr
 ```
 
+## Contributing
+
+Contributors are welcome! Please feel free to report bugs or make pull requests to this repo.
+
 ## License
 
 bomr is licensed under the [BSD simplified license](license.bsd).
