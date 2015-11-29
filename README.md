@@ -14,7 +14,7 @@ bomr <files>
 bomr -r <dir>
 ```
 
-#### Except for dirs -o files whose full name matches &lt;pattern&gt;.
+#### Except for dirs || files whose full name matches &lt;pattern&gt;.
 
 ```bash
 bomr -r <dir> -e "<pattern>" # note the quotes
