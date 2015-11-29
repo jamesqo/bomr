@@ -1,0 +1,104 @@
+#!/bin/bash
+
+function help {
+    echo 'bomr is a tool that purges UTF-8 BOMs from your files.'
+    echo
+    echo 'Usage: bomr [-r|--recurse] files [directories]'
+    echo
+    echo 'recurse: Allows [directories] to be specified.'
+    echo 'Recursively removes the BOM for each file in [directories].'
+}
+
+function error {
+    echo "$1" 1>&2
+}
+
+function has-bom {
+    # Test if the file starts with 0xEF, 0xBB, and 0xBF
+    head -c 3 "$1" | grep -q $'\xef\xbb\xbf'
+}
+
+function purge-file {
+    # Where the real work starts
+    if has-bom "$1"; then
+        tail -c +4 "$1" | tee > "$1"
+    fi
+}
+
+function purge-directory {
+    find "$1" -type f | while read f
+    do # TODO: This breaks for filenames with newlines.
+        purge-file "$f"
+    done
+}
+
+targets=() # Empty array
+recurse='false'
+
+# At least one argument is required
+if [ $# -eq 0 ]; then
+    help 1>&2
+    exit 4
+fi
+
+# Get options
+while [ $# -gt 0 ]
+do
+    case "$1" in
+        '-?'|-h|--help) # ? matches a single character by default, we don't want this behavior
+        help
+        exit 0
+        ;;
+        -r|--recurse)
+        recurse='true'
+        ;;
+        --) # Stop parsing
+        targets="$@"
+        break # From outer loop
+        ;;
+        *)
+        targets+=("$1") # List.Add()
+        ;;
+    esac
+    shift
+done
+
+# Verify everything exists
+for item in "${targets[@]}"
+do
+    if [ ! -e "$item" ]; then
+        error "Error: $item does not exist!"
+        exit 1
+    fi
+done
+
+if [ $recurse = 'false' ]; then
+    # We only let people specify directories if $recurse is true.
+    # Validate that all arguments are files before we do any damage.
+    for item in "${targets[@]}"
+    do
+        if [ ! -f "$item" ]; then
+            error "Error: $item is not a file."
+            error 'To remove the BOMs of all the files in a directory, specify the --recurse flag.'
+            exit 2
+        fi
+    done
+
+    # Do it!
+    for file in "${targets[@]}"
+    do
+        purge-file "$file"
+    done
+else # $recurse = 'true'
+    for item in "${targets[@]}"
+    do
+        if [ -d "$item" ]; then
+            purge-directory "$item"
+        elif [ -f "$item" ]; then
+            purge-file "$item"
+        else # Edge cases like /dev/null
+            error "Error: $item is not a file or a directory!"
+            exit 3
+        fi
+    done
+fi
