@@ -14,10 +14,10 @@ bomr <files>
 bomr -r <dir>
 ```
 
-#### Except for files whose full name matches &lt;pattern&gt;.
+#### Except for files whose full name matches &lt;regex&gt;.
 
 ```bash
-bomr -r <dir> -e "<pattern>" # note the quotes
+bomr -r <dir> -e "<regex>" # note the quotes
 ```
 
 ## Supported Platforms
@@ -39,8 +39,16 @@ curl -sSL 'https://github.com/jamesqo/bomr/raw/master/bomr' | sudo tee $installp
 chmod +x $installpath
 ```
 
-Windows (via the command prompt):
+Windows (via Cygwin or Git Bash):
 
-```cmd
-powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object Net.WebClient).DownloadString('https://github.com/jamesqo/bomr/raw/master/install.ps1'))" && set path=%path%;%LocalAppData%\bomr
+```bash
+curl -sSL 'https://github.com/jamesqo/bomr/raw/master/install.sh' | xargs -0 -i bash --noprofile -c '{}' && PATH+=:~/AppData/Local/bomr
 ```
+
+## Contributing
+
+Contributors are welcome! Please feel free to report bugs or make pull requests to this repo.
+
+## License
+
+bomr is licensed under the [BSD simplified license](license.bsd).
