@@ -44,3 +44,7 @@ Windows (via Cygwin or Git Bash):
 ```bash
 curl -sSL 'https://github.com/jamesqo/bomr/raw/master/install.sh' | xargs -0 -i bash --noprofile -c '{}' && PATH+=:~/AppData/Local/bomr
 ```
+
+## License
+
+bomr is licensed under the [BSD simplified license](license.bsd).
