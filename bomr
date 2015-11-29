@@ -13,6 +13,17 @@ function error {
     echo "$1" 1>&2
 }
 
+function include-file {
+    # Test if the file matches an exclude
+    for pattern in "${exclude[@]}"
+    do
+        # $pattern is read as extended regexp
+        if [[ $1 =~ $pattern ]]; then
+            return 1 # 1 -eq false in Bash
+        fi
+    done
+}
+
 function has-bom {
     # Test if the file starts with 0xEF, 0xBB, and 0xBF
     head -c 3 "$1" | grep -q $'\xef\xbb\xbf'
@@ -20,7 +31,7 @@ function has-bom {
 
 function purge-file {
     # Where the real work starts
-    if has-bom "$1"; then
+    if include-file "$1" && has-bom "$1"; then
         tail -c +4 "$1" | tee > "$1"
     fi
 }
@@ -33,6 +44,7 @@ function purge-directory {
 }
 
 targets=() # Empty array
+exclude=()
 recurse='false'
 
 # At least one argument is required
@@ -48,6 +60,10 @@ do
         '-?'|-h|--help) # ? matches a single character by default, we don't want this behavior
         help
         exit 0
+        ;;
+        -e|--exclude)
+        exclude+=("$2")
+        shift
         ;;
         -r|--recurse)
         recurse='true'
