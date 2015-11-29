@@ -14,16 +14,33 @@ bomr <files>
 bomr -r <dir>
 ```
 
-#### Except for dirs or files whose full name matches &lt;pattern&gt;.
+#### Except for files whose full name matches &lt;pattern&gt;.
 
 ```bash
 bomr -r <dir> -e "<pattern>" # note the quotes
 ```
 
-## Installation
-
-TBC.
-
 ## Supported Platforms
 
-TBC.
+Any system that supports Bash should be good to go, including:
+
+- Linux
+- OS X
+- Git Bash (aka MinGW)
+- Cygwin
+
+## Installing bomr
+
+Linux and OS X:
+
+```bash
+installpath='/usr/local/bin/bomr' # modify as needed
+curl -sSL 'https://github.com/jamesqo/bomr/raw/master/bomr' | sudo tee $installpath
+chmod +x $installpath
+```
+
+Windows (via the command prompt):
+
+```cmd
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object Net.WebClient).DownloadString('https://github.com/jamesqo/bomr/raw/master/install.ps1'))" && set path=%path%;%LocalAppData%\bomr
+```
