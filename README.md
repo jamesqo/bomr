@@ -39,7 +39,7 @@ curl -sSL 'https://github.com/jamesqo/bomr/raw/master/bomr' | sudo tee $installp
 chmod +x $installpath
 ```
 
-Windows (via Git Bash or Cygwin):
+Windows (via Cygwin or Git Bash):
 
 ```cmd
 powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object Net.WebClient).DownloadString('https://github.com/jamesqo/bomr/raw/master/install.ps1'))" && PATH+=:~/AppData/Local/bomr
