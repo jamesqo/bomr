@@ -14,10 +14,10 @@ bomr <files>
 bomr -r <dir>
 ```
 
-#### Except for files whose full name matches &lt;pattern&gt;.
+#### Except for files whose full name matches &lt;regex&gt;.
 
 ```bash
-bomr -r <dir> -e "<pattern>" # note the quotes
+bomr -r <dir> -e "<regex>" # note the quotes
 ```
 
 ## Supported Platforms
