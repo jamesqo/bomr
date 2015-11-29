@@ -28,7 +28,7 @@ echo "$script" > bomr
 chmod +x bomr
 
 # Add ourselves to PATH if not in it
-which bomr 1> /dev/null
+which bomr &> /dev/null
 if [ $? -ne 0 ]; then
     currentpath=$(get-path)
     lastchar="${currentpath: -1}"
