@@ -41,6 +41,6 @@ chmod +x $installpath
 
 Windows (via Cygwin or Git Bash):
 
-```cmd
-powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object Net.WebClient).DownloadString('https://github.com/jamesqo/bomr/raw/master/install.ps1'))" && PATH+=:~/AppData/Local/bomr
+```bash
+curl -sSL 'https://github.com/jamesqo/bomr/raw/master/install.sh' | xargs -i bash --noprofile -c '{}' && PATH+=:~/AppData/Local/bomr
 ```
