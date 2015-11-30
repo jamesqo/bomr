@@ -37,8 +37,8 @@ function purge-file {
 }
 
 function purge-directory {
-    find "$1" -type f | while read f
-    do # TODO: This breaks for filenames with newlines.
+    find "$1" -type f -print0 | while read -d '' f
+    do
         purge-file "$f"
     done
 }
