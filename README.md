@@ -1,6 +1,6 @@
 # bomr
 
-![Logo](icons/icon_275_220.png)
+![Logo](icons/icon.png)
 
 Is your text editor polluting your precious code with UTF-8 BOMs? bomr is here to help.
 
