@@ -74,6 +74,7 @@ do
         recurse='true'
         ;;
         --) # Stop parsing
+        shift
         targets="$@"
         break # From outer loop
         ;;
