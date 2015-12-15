@@ -13,7 +13,7 @@ function help {
 }
 
 function error {
-    echo "$1" 1>&2
+    echo "$@" 1>&2
 }
 
 function include-file {
