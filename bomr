@@ -3,7 +3,10 @@
 function help {
     echo 'bomr is a tool that purges UTF-8 BOMs from your files.'
     echo
-    echo 'Usage: bomr [-r|--recurse] files [directories]'
+    echo 'Usage: bomr [-e|--exclude pattern] [-r|--recurse] files [directories]'
+    echo
+    echo 'exclude: Exclude files whose full name matches [pattern].'
+    echo '[pattern] is interpreted as an extended regexp.'
     echo
     echo 'recurse: Allows [directories] to be specified.'
     echo 'Recursively removes the BOM for each file in [directories].'
