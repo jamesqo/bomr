@@ -35,7 +35,9 @@ function has-bom {
 function purge-file {
     # Where the real work starts
     if include-file "$1" && has-bom "$1"; then
-        tail -c +4 "$1" | tee > "$1"
+        # Don't pipe since we may 'clobber' the file with concurrent read/writes
+        string=$(tail -c +4 "$1")
+        echo "$string" > "$1"
     fi
 }
 
