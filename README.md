@@ -44,7 +44,7 @@ chmod +x $installpath
 Windows (via Cygwin or Git Bash):
 
 ```bash
-curl -sSL 'https://github.com/jamesqo/bomr/raw/master/install.sh' | xargs -0 -i bash --noprofile -c '{}' && PATH+=:~/AppData/Local/bomr
+curl -sSL 'https://github.com/jamesqo/bomr/raw/master/install.sh' | xargs -0 bash --noprofile -c && PATH+=:~/AppData/Local/bomr
 ```
 
 ## Contributing
