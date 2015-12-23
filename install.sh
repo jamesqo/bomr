@@ -21,7 +21,7 @@ script=$(curl -sSL 'https://github.com/jamesqo/bomr/raw/master/bomr')
 
 # Write it out to AppData/Local
 cd ~/AppData/Local
-mkdir bomr && cd bomr
+mkdir -p bomr && cd bomr
 echo "$script" > bomr
 
 # Make sure bomr is executable
