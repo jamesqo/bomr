@@ -33,7 +33,7 @@ Any system that supports Bash should be good to go, including:
 
 ## Installing bomr
 
-bomr uses [sinister](https://github.com/jamesqo/sinister) for installation. To install, run
+bomr uses [sinister](https://github.com/jamesqo/sinister) for installation. To get it, run
 
 ```bash
 sh <(curl -sSL http://git.io/sinister) -u http://github.com/jamesqo/bomr/raw/master/bomr
