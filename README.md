@@ -33,18 +33,10 @@ Any system that supports Bash should be good to go, including:
 
 ## Installing bomr
 
-Linux and OS X:
+bomr uses [sinister](https://github.com/jamesqo/sinister) for installation. To install, run
 
 ```bash
-installpath='/usr/local/bin/bomr' # modify as needed
-curl -sSL 'https://github.com/jamesqo/bomr/raw/master/bomr' | sudo tee $installpath
-chmod +x $installpath
-```
-
-Windows (via Cygwin or Git Bash):
-
-```bash
-curl -sSL 'https://github.com/jamesqo/bomr/raw/master/install.sh' | xargs -0 bash --noprofile -c && PATH+=:~/AppData/Local/bomr
+sh <(curl -sSL http://git.io/sinister) -u http://github.com/jamesqo/bomr/raw/master/bomr
 ```
 
 ## Contributing
